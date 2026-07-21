@@ -30,22 +30,14 @@ function MessageOnScreen({message, sender}) {
   const imageUser = "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
   const imageChatbot = "https://cdn-icons-png.flaticon.com/512/13330/13330989.png"
 
-  if(sender === "user") {
-    return (
-      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-        <p>{message}</p>
-        <img src={imageUser} width="100px" height="100px"/>
-      </div>
-    )
-  }
-
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-      <img src={imageChatbot} width="100px" height="100px"/>
-        <p>{message}</p>
-      </div>
-    )
-  }
+      {sender == "chatbot" ? <img src={imageChatbot} width="100px" height="100px"/> : null} 
+      <p>{message}</p>
+      {sender == "user" ? <img src={imageUser} width="100px" height="100px"/> : null }   
+    </div>
+  )
+}
 
 
 export default App
