@@ -6,8 +6,8 @@ function App() {
   return (
     <>
       <QuestionBar />
-      <MessageOnScreen message="Hello, I am a chatbot. How can I help you today?"/>
-      <MessageOnScreen message="I am a user. I want to know about the weather in Tokyo."/>
+      <MessageOnScreen message="Hello, I am a chatbot. How can I help you today?" sender="chatbot"/>
+      <MessageOnScreen message="I am a user. I want to know about the weather in Tokyo." sender="user"/>
     </>
   )
 }
@@ -26,12 +26,13 @@ function QuestionBar() {
 }
 
 
-function MessageOnScreen(message) {
-  const image = "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+function MessageOnScreen({message, sender}) {
+  const imageUser = "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+  const imageChatbot = "https://cdn-icons-png.flaticon.com/512/13330/13330989.png"
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-      <img src={image} width="100px" height="100px"/>
-      <p>{message.message}</p>
+      <img src={sender === "user" ? imageUser : imageChatbot} width="100px" height="100px"/>
+      <p>{message}</p>
     </div>
   )
 }
