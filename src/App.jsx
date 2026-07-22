@@ -25,11 +25,16 @@ function App() {
 }
 
 function QuestionBar({ setMessageList }) {
-  const message = "Please enter your question for the chat"
+  const placeholder = "Please enter your question for the chat"
+  const [message, setMessage] = useState("");
+
+  function handleChange(event) {
+    setMessage(event.target.value);
+  }
 
   function handleSubmit() {
     setMessageList(prev => [...prev, {
-      message: "Test ",
+      message: message,
       sender: "user",
       id: crypto.randomUUID()
     }]);
@@ -39,7 +44,9 @@ function QuestionBar({ setMessageList }) {
     <>
       <input
         type="text"
-        placeholder={message}
+        value={message}
+        placeholder={placeholder}
+        onChange={handleChange}
       />
       <button type="submit" onClick={handleSubmit}>Submit</button>
     </>
