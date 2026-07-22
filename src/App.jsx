@@ -38,7 +38,13 @@ function QuestionBar({ setMessageList }) {
       message: message,
       sender: "user",
       id: crypto.randomUUID()
-    }]);
+    },
+    {
+      message: "Thinking...",
+      sender: "chatbot",
+      id: crypto.randomUUID()
+    }
+  ]);
     setMessage("");
   }
 
