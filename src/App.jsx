@@ -19,13 +19,13 @@ function App() {
 
   return (
     <>
-      <QuestionBar setMessageList={setMessageList} />
+      <QuestionBar messageList={messageList} setMessageList={setMessageList} />
       <AllMessages messageList={messageList} />
     </>
   )
 }
 
-function QuestionBar({ setMessageList }) {
+function QuestionBar({ messageList, setMessageList }) {
   const placeholder = "Please enter your question for the chat"
   const [message, setMessage] = useState("");
 
@@ -34,17 +34,19 @@ function QuestionBar({ setMessageList }) {
   }
 
   function handleSubmit() {
-    setMessageList(prev => [...prev, {
+    const newMessageList = [...messageList, {
       message: message,
       sender: "user",
       id: crypto.randomUUID()
-    },
-    {
+    }];
+    setMessageList( newMessageList );
+    const newMessageListAfterThinking = [...newMessageList, {
       message: "Thinking...",
       sender: "chatbot",
       id: crypto.randomUUID()
-    }
-  ]);
+    }];
+    setMessageList( newMessageListAfterThinking );
+
     setMessage("");
   }
 
