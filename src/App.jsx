@@ -1,19 +1,20 @@
 import { useState } from "react";
 
-const initialMessages = [
-  {
-    message: "Hello, I am a chatbot. How can I help you today?",
-    sender: "chatbot",
-    id: 1
-  },
-  {
-    message: "I am a user. I want to know about the weather in Tokyo.",
-    sender: "user",
-    id: 2
-  }
-];
+
 
 function App() {
+  const initialMessages = [
+    {
+      message: "Hello, I am a chatbot. How can I help you today?",
+      sender: "chatbot",
+      id: 1
+    },
+    {
+      message: "I am a user. I want to know about the weather in Tokyo.",
+      sender: "user",
+      id: 2
+    }
+  ]; 
   const [messageList, setMessageList] = useState(initialMessages);
 
   return (
@@ -38,6 +39,7 @@ function QuestionBar({ setMessageList }) {
       sender: "user",
       id: crypto.randomUUID()
     }]);
+    setMessage("");
   }
 
   return ( 
