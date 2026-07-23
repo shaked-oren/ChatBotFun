@@ -8,20 +8,15 @@ function App() {
       message: "Hello, I am a chatbot. How can I help you today?",
       sender: "chatbot",
       id: 1
-    },
-    {
-      message: "I am a user. I want to know about the weather in Tokyo.",
-      sender: "user",
-      id: 2
     }
   ]; 
   const [messageList, setMessageList] = useState(initialMessages);
 
   return (
-    <>
+    <div className="app">
       <QuestionBar messageList={messageList} setMessageList={setMessageList} />
       <AllMessages messageList={messageList} />
-    </>
+    </div>
   )
 }
 
@@ -51,15 +46,16 @@ function QuestionBar({ messageList, setMessageList }) {
   }
 
   return ( 
-    <>
+    <div className="question-bar">
       <input
+        className="question-input"
         type="text"
         value={message}
         placeholder={placeholder}
         onChange={handleChange}
       />
-      <button type="submit" onClick={handleSubmit}>Submit</button>
-    </>
+      <button className="submit-button" type="submit" onClick={handleSubmit}>Submit</button>
+    </div>
   )
 }
 
@@ -75,11 +71,11 @@ function MessageOnScreen({message, sender}) {
   const imageChatbot = "https://cdn-icons-png.flaticon.com/512/13330/13330989.png"
 
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+    <div className={`div-message-${sender}`} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
       {sender == 'chatbot' && (
         <img src={imageChatbot} width="100px" height="100px"/>
         )} 
-      <p>{message}</p>
+      <p className={`message-on-screen`}>{message}</p>
       {sender == 'user' && (
         <img src={imageUser} width="100px" height="100px"/>
         )} 
