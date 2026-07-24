@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 
 
@@ -14,8 +14,8 @@ function App() {
 
   return (
     <div className="app">
-      <QuestionBar messageList={messageList} setMessageList={setMessageList} />
       <AllMessages messageList={messageList} />
+      <QuestionBar messageList={messageList} setMessageList={setMessageList} />
     </div>
   )
 }
@@ -60,10 +60,21 @@ function QuestionBar({ messageList, setMessageList }) {
 }
 
 function AllMessages({ messageList }) {
-  return messageList.map((message) => (
-    <MessageOnScreen key={message.id} message={message.message} sender={message.sender}/>
-  ));
-}
+  const messageContainerRef = useRef(null);
+  useEffect(() => {
+    const containerElement = messageContainerRef.current;
+    if (containerElement) {
+      containerElement.scrollTop = containerElement.scrollHeight;
+    }
+  }, [messageList]);
+  return (
+    <div className="messages-container" ref={messageContainerRef}>
+      {messageList.map((message) => (
+        <MessageOnScreen key={message.id} message={message.message} sender={message.sender}/>
+      ))}
+    </div>
+  );
+} 
 
 
 function MessageOnScreen({message, sender}) {
@@ -73,11 +84,11 @@ function MessageOnScreen({message, sender}) {
   return (
     <div className={`div-message-${sender}`} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
       {sender == 'chatbot' && (
-        <img src={imageChatbot} width="100px" height="100px"/>
+        <img src={imageChatbot} width="50px" height="50px"/>
         )} 
       <p className={`message-on-screen`}>{message}</p>
       {sender == 'user' && (
-        <img src={imageUser} width="100px" height="100px"/>
+        <img src={imageUser} width="50px" height="50px"/>
         )} 
     </div>
   )
