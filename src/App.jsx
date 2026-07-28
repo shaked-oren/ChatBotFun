@@ -1,6 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import { MessageBubble } from "./components/MessageBubble";
-
+import { useState } from "react";
+import { ChatMessages } from "./components/ChatMessages";
 
 
 function App() {
@@ -15,7 +14,7 @@ function App() {
 
   return (
     <div className="app">
-      <AllMessages messageList={messageList} />
+      <ChatMessages messageList={messageList} />
       <QuestionBar messageList={messageList} setMessageList={setMessageList} />
     </div>
   )
@@ -60,22 +59,6 @@ function QuestionBar({ messageList, setMessageList }) {
   )
 }
 
-function AllMessages({ messageList }) {
-  const messageContainerRef = useRef(null);
-  useEffect(() => {
-    const containerElement = messageContainerRef.current;
-    if (containerElement) {
-      containerElement.scrollTop = containerElement.scrollHeight;
-    }
-  }, [messageList]);
-  return (
-    <div className="messages-container" ref={messageContainerRef}>
-      {messageList.map((message) => (
-        <MessageBubble key={message.id} message={message.message} sender={message.sender}/>
-      ))}
-    </div>
-  );
-} 
 
 
 export default App
