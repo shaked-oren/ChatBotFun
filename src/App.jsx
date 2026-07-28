@@ -76,7 +76,6 @@ function AllMessages({ messageList }) {
   );
 } 
 
-
 function MessageOnScreen({message, sender}) {
   const imageUser = "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
   const imageChatbot = "https://cdn-icons-png.flaticon.com/512/13330/13330989.png"
@@ -93,6 +92,5 @@ function MessageOnScreen({message, sender}) {
     </div>
   )
 }
-
 
 export default App
