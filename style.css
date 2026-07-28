@@ -58,7 +58,7 @@ body {
     margin-top: 10px;
 }
 
-.message-on-screen {
+.message-bubble {
     display: flex;
     justify-content: left;
     align-items: left;

@@ -70,13 +70,13 @@ function AllMessages({ messageList }) {
   return (
     <div className="messages-container" ref={messageContainerRef}>
       {messageList.map((message) => (
-        <MessageOnScreen key={message.id} message={message.message} sender={message.sender}/>
+        <MessageBubble key={message.id} message={message.message} sender={message.sender}/>
       ))}
     </div>
   );
 } 
 
-function MessageOnScreen({message, sender}) {
+function MessageBubble({message, sender}) {
   const imageUser = "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
   const imageChatbot = "https://cdn-icons-png.flaticon.com/512/13330/13330989.png"
 
@@ -85,7 +85,7 @@ function MessageOnScreen({message, sender}) {
       {sender == 'chatbot' && (
         <img src={imageChatbot} width="50px" height="50px"/>
         )} 
-      <p className={`message-on-screen`}>{message}</p>
+      <p className="message-bubble">{message}</p>
       {sender == 'user' && (
         <img src={imageUser} width="50px" height="50px"/>
         )} 
