@@ -1,0 +1,6 @@
+.messages-container {
+    flex-grow: 1;
+    margin-bottom: 10px;
+    overflow: scroll;
+    scrollbar-width: none;
+}

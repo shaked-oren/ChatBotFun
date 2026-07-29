@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChatMessages } from "./components/ChatMessages";
 import { MessageInput } from "./components/MessageInput";
+import "./App.css";
 
 function App() {
   const initialMessages = [

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./MessageInput.css";
 
 export function MessageInput({ messageList, setMessageList }) {
     const placeholder = "Please enter your question for the chat"
